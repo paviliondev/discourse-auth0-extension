@@ -1,0 +1,18 @@
+en:
+  system_messages:
+    auth0_invite_report:
+      title: "Auth0 Invite Report"
+      subject_template: "Auth0 Invite Report"
+      text_body_template: |
+        Auth0 user import job: %{job_status}.
+        Auth0 invites sent to: %{invited_users}.
+        Invites failed to send to: %{failed_users}.
+  
+  site_settings:
+    auth0_extension_enabled: Enable OAuth2 Extension.
+    auth0_client_id: Auth0 Discourse Client ID.
+    auth0_client_secret: Auth0 Discourse Client Secret.
+    auth0_domain: Auth0 tenant domain.
+    auth0_silent_login: Attempts to log in guests automatically, even when login required is disabled. Only works if auth0 is the only authentication method.
+    auth0_bulk_invites: Enable bulk invites via Auth0.
+    auth0_invites_connection_id: ID of connection to import users into when inviting.

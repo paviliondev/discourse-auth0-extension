@@ -1,0 +1,8 @@
+plugins:
+  auth0_extension_enabled:
+  auth0_domain: ""
+  auth0_client_id: ""
+  auth0_client_secret: ""
+  auth0_silent_login: false
+  auth0_bulk_invites: false
+  auth0_invites_connection_id: ""
