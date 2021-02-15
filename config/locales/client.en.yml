@@ -1,0 +1,6 @@
+en:
+  js:  
+    auth0_extension:
+      title: "Auth0 Extension"
+      logs: "Logs"
+      filter: "user or group"

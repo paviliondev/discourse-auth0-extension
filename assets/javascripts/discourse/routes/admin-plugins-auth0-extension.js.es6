@@ -1,4 +1,4 @@
-import Auth0Log from '../models/oauth2-log';
+import Auth0Log from '../models/auth0-log';
 import DiscourseRoute from "discourse/routes/discourse";
 
 export default DiscourseRoute.extend({

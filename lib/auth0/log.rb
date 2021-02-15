@@ -1,14 +1,12 @@
-class Auth0::Log
+class WebhookReceiver::Log
   include ActiveModel::Serialization
   
-  attr_accessor :type, :format, :user, :group, :message, :date
+  attr_accessor :user, :group, :message, :date
   
   PAGE_LIMIT = 100
   
   def initialize(attrs)
     attrs = attrs.with_indifferent_access
-    @type = attrs['type']
-    @format = attrs['format']
     @user = attrs['user']
     @group = attrs['group']
     @message = attrs['message']
@@ -24,7 +22,7 @@ class Auth0::Log
     )
   end
   
-  def self.list_query(type)
+  def self.list_query
     PluginStoreRow.where("
       plugin_name = '#{Auth0::PLUGIN_NAME}' AND
       key LIKE 'log_%' AND
@@ -36,8 +34,8 @@ class Auth0::Log
     "AND "
   end
   
-  def self.list(page: 0, filter: '', type: 'group_membership')
-    list = list_query(type)
+  def self.list(page: 0, filter: '')
+    list = list_query
     
     if filter
       list = list.where("
