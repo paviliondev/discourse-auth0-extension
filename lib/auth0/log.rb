@@ -1,4 +1,4 @@
-class WebhookReceiver::Log
+class Auth0::Log
   include ActiveModel::Serialization
   
   attr_accessor :user, :group, :message, :date

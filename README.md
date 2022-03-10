@@ -2,7 +2,7 @@
 
 > This Plugin is still a work in progress. We're building it based on various pieces of work we've done for clients on integrating Auth0 with Discourse. If you'd like to contribute to the plugin, or request specific features, please do so in our knowledge-base topic for this plugin: https://thepavilion.io/t/discourse-auth0-extension-plugin/4035.
 
-This plugin contains Auth0-specific extensions to Discourse's user management. Each feature is described below.
+This plugin contains Auth0-specific extensions to Discourse's user management. Each feature is described below. Please note that this is plugin assumes you have Auth0 authentication already set up, e.g. using the [OAuth2 Basic Plugin](https://github.com/discourse/discourse-oauth2-basic).
 
 ### Auth0 Invites
 

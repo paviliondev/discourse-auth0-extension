@@ -6,7 +6,6 @@
 # authors: Pavilion
 # url: https://github.com/paviliondev/discourse-auth0-extension
 
-enabled_site_setting :auth0_extension_enabled
 add_admin_route 'auth0_extension.title', 'auth0-extension'
 register_asset 'stylesheets/common/auth0_extension.scss'
 
@@ -21,13 +20,15 @@ module ::ODICStrategyExtension
   end
 end
 
-on(:after_plugin_activation) do
+DiscourseEvent.on(:after_plugin_activation) do
   if Discourse.plugins.any? { |p| p.name == 'discourse-openid-connect' }
     OmniAuth::Strategies::OpenIDConnect.prepend ODICStrategyExtension
   end
 end
 
 after_initialize do
+  enabled_site_setting :auth0_extension_enabled
+
   %w{
     ../lib/auth0/engine.rb
     ../lib/auth0/log.rb
@@ -43,11 +44,11 @@ after_initialize do
   }.each do |path|
     load File.expand_path(path, __FILE__)
   end
-  
+
   ::UsersController.prepend UsersControllerAuth0Extension
   ::InvitesController.prepend InvitesControllerAuth0Extension
   ::Guardian.prepend GuardianAuth0Extension
-  
+
   add_model_callback(:application_controller, :before_action) do
     if current_user && cookies[:auth0_silent]
       cookies.delete(:auth0_silent)
@@ -59,8 +60,8 @@ after_initialize do
         !cookies[:auth0_silent]
     end
   end
-  
-  add_to_class(:application_controller, :attempt_auth0_silent_login) do    
+
+  add_to_class(:application_controller, :attempt_auth0_silent_login) do
     cookies[:destination_url] = destination_url
     cookies[:auth0_silent] = true
     redirect_to path("/auth/#{Discourse.enabled_authenticators.first.name}")

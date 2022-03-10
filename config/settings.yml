@@ -1,5 +1,5 @@
 plugins:
-  auth0_extension_enabled:
+  auth0_extension_enabled: false
   auth0_domain: ""
   auth0_client_id: ""
   auth0_client_secret: ""
